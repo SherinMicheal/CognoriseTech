@@ -1,0 +1,28 @@
+import random
+
+def roll_dice(num_sides, num_rolls):
+    print("Rolling", num_rolls, "dice with", num_sides, "sides:")
+    for i in range(num_rolls):
+        roll_result = random.randint(1, num_sides)
+        print("Roll", i+1, ":", roll_result)
+
+def main():
+    print("Welcome to the Dice Roller Simulator!")
+    while True:
+        try:
+            num_sides = int(input("Enter the number of sides on the dice: "))
+            num_rolls = int(input("Enter the number of rolls: "))
+            if num_sides <= 0 or num_rolls <= 0:
+                print("Both number of sides and number of rolls must be positive integers.")
+                continue
+            roll_dice(num_sides, num_rolls)
+        except ValueError:
+            print("Invalid input. Please enter a valid integer.")
+        
+        play_again = input("Do you want to roll again? (yes/no): ").lower()
+        if play_again != 'yes':
+            print("Thanks for using the Dice Roller Simulator!")
+            break
+
+if __name__ == "__main__":
+    main()
